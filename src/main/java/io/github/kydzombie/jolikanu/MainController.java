@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.web.WebView;
 
 public class MainController {
     @FXML
@@ -12,7 +13,7 @@ public class MainController {
 
     @FXML
     private Tab transliteratorTab;
-    
+
     @FXML
     @SuppressWarnings("unused")
     private VBox transliterator;
@@ -21,13 +22,24 @@ public class MainController {
     private TransliteratorController transliteratorController;
 
     @FXML
+    private WebView bookWebView;
+
+    @FXML
+    private WebView dictionaryWebView;
+
+    @FXML
     public void initialize() {
         tabPane.getSelectionModel().selectedIndexProperty().addListener(
-                (newTab, _, _) -> {
-                    if (tabPane.getTabs().get(newTab.getValue().intValue()) == transliteratorTab) {
+                (newTabHolder, _, _) -> {
+                    int newTabNumber = newTabHolder.getValue().intValue();
+                    Tab newTab = tabPane.getTabs().get(newTabNumber);
+                    if (newTab == transliteratorTab) {
                         transliteratorController.updateLikanuText();
                     }
                 }
         );
+
+        bookWebView.getEngine().load("https://en.kokanu.com/");
+        dictionaryWebView.getEngine().load("https://dictionary.kokanu.com/");
     }
 }

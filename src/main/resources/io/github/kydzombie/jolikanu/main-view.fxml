@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
       prefHeight="800.0" prefWidth="1280.0" spacing="20.0" xmlns="http://javafx.com/javafx/24"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.kydzombie.jolikanu.MainController">
@@ -12,7 +12,17 @@
     </padding>
     <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
         <Tab fx:id="transliteratorTab" text="Transliterator">
-            <fx:include source="transliterator.fxml" fx:id="transliterator"/>
+            <fx:include fx:id="transliterator" source="transliterator.fxml"/>
+        </Tab>
+        <Tab text="Kokanu Book">
+            <VBox prefHeight="800.0" prefWidth="1280.0">
+                <WebView fx:id="bookWebView" prefHeight="800.0" prefWidth="1280.0"/>
+            </VBox>
+        </Tab>
+        <Tab text="Dictionary">
+            <VBox prefHeight="800.0" prefWidth="1280.0">
+                <WebView fx:id="dictionaryWebView" prefHeight="800.0" prefWidth="1280.0"/>
+            </VBox>
         </Tab>
         <Tab text="Settings">
             <fx:include source="settings.fxml"/>
