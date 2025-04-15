@@ -1,41 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.*?>
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
-      prefWidth="1280.0" spacing="4.0" xmlns="http://javafx.com/javafx/24" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="io.github.kydzombie.jolikanu.settings.SettingsController">
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="4.0" xmlns="http://javafx.com/javafx/24" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.kydzombie.jolikanu.settings.SettingsController">
     <padding>
-        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0"/>
+        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
     </padding>
-    <HBox>
-        <CheckBox fx:id="convertCommas" disable="true" mnemonicParsing="false" onAction="#setConvertCommas"
-                  text=", -&gt; ､">
-            <padding>
-                <Insets bottom="4.0" top="4.0"/>
-            </padding>
-        </CheckBox>
-        <Label text="Disabled due to a rendering issue :(" textFill="RED">
-            <padding>
-                <Insets bottom="4.0" left="4.0" right="4.0" top="4.0"/>
-            </padding>
-        </Label>
-    </HBox>
-    <HBox prefHeight="100.0" prefWidth="200.0" spacing="4.0">
+    <CheckBox fx:id="convertCommas" mnemonicParsing="false" onAction="#setConvertCommas" selected="true" text=", -&gt; ､">
+        <padding>
+            <Insets bottom="4.0" top="4.0" />
+        </padding>
+    </CheckBox>
+    <HBox spacing="4.0">
         <VBox.margin>
-            <Insets/>
+            <Insets />
         </VBox.margin>
         <Label prefWidth="58.0" text="-n Diacritic">
             <HBox.margin>
-                <Insets/>
+                <Insets />
             </HBox.margin>
             <padding>
-                <Insets bottom="4.0" top="4.0"/>
+                <Insets bottom="4.0" top="4.0" />
             </padding>
         </Label>
-        <ComboBox fx:id="diacriticComboBox" onAction="#updateMacronSetting" prefWidth="150.0"/>
+        <ComboBox fx:id="diacriticComboBox" onAction="#updateMacronSetting" prefWidth="150.0" />
+    </HBox>
+    <HBox spacing="4.0">
+        <children>
+            <Label text="Preferred Writing System">
+                <padding>
+                    <Insets bottom="4.0" top="4.0" />
+                </padding>
+            </Label>
+            <ComboBox fx:id="writingSystemPreferenceComboBox" onAction="#updateWritingSystemSetting" prefWidth="150.0" />
+        </children>
     </HBox>
 </VBox>

@@ -13,4 +13,6 @@ module io.github.kydzombie.jolikanu {
     opens io.github.kydzombie.jolikanu.transliterator to javafx.fxml;
     exports io.github.kydzombie.jolikanu.settings;
     opens io.github.kydzombie.jolikanu.settings to javafx.fxml;
+    exports io.github.kydzombie.jolikanu.dictionary;
+    opens io.github.kydzombie.jolikanu.dictionary to javafx.fxml;
 }

@@ -12,9 +12,17 @@ public class SettingsController {
     ComboBox<NasalDiacritic> diacriticComboBox;
 
     @FXML
+    ComboBox<WritingSystemPreference> writingSystemPreferenceComboBox;
+
+    @FXML
     private void initialize() {
+        convertCommas.setSelected(Settings.convertCommas);
+
         diacriticComboBox.getItems().addAll(NasalDiacritic.values());
-        diacriticComboBox.setValue(NasalDiacritic.MACRON);
+        diacriticComboBox.setValue(Settings.diacriticN);
+
+        writingSystemPreferenceComboBox.getItems().addAll(WritingSystemPreference.values());
+        writingSystemPreferenceComboBox.setValue(Settings.writingSystemPreference);
     }
 
     @FXML
@@ -25,5 +33,10 @@ public class SettingsController {
     @FXML
     private void updateMacronSetting() {
         Settings.diacriticN = diacriticComboBox.getValue();
+    }
+
+    @FXML
+    private void updateWritingSystemSetting() {
+        Settings.writingSystemPreference = writingSystemPreferenceComboBox.getValue();
     }
 }

@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "Noto Sans";
+    src: url("fonts/NotoSans-Regular.ttf");
+}
+
+.root {
+    -fx-font-family: "Noto Sans";
+}
