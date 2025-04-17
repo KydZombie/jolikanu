@@ -1,94 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/24"
-          xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="io.github.kydzombie.jolikanu.dictionary.DictionaryController">
-    <columnConstraints>
-        <ColumnConstraints percentWidth="30"/>
-        <ColumnConstraints percentWidth="60"/>
-    </columnConstraints>
-    <VBox>
-        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Words" textAlignment="CENTER">
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.web.WebView?>
+
+<GridPane hgap="4.0" vgap="4.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.kydzombie.jolikanu.dictionary.DictionaryController">
+    <GridPane>
+        <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="-Infinity" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints vgrow="NEVER" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+        <Label style="-fx-font-size: 16pt;" styleClass="bold" text="Words" GridPane.columnSpan="2147483647" />
+        <Label text="Kokanu" GridPane.hgrow="NEVER" GridPane.rowIndex="1">
             <padding>
-                <Insets bottom="4.0" left="4.0" right="4.0" top="4.0"/>
+                <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
             </padding>
-            <font>
-                <Font size="18.0"/>
-            </font>
+         <styleClass>
+            <String fx:value="bold" />
+            <String fx:value="search-label" />
+         </styleClass>
         </Label>
-        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0">
-            <HBox>
-                <Label text="Kokanu">
-                    <padding>
-                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0"/>
-                    </padding>
-                </Label>
-                <TextField fx:id="kokanuSearchBox" onKeyTyped="#updateSearch" HBox.hgrow="ALWAYS"/>
-                <padding>
-                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0"/>
-                </padding>
-                <VBox.margin>
-                    <Insets/>
-                </VBox.margin>
-            </HBox>
-            <HBox>
-                <Label text="English">
-                    <padding>
-                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0"/>
-                    </padding>
-                </Label>
-                <TextField fx:id="englishSearchBox" onKeyTyped="#updateSearch" HBox.hgrow="ALWAYS"/>
-                <padding>
-                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0"/>
-                </padding>
-            </HBox>
-        </VBox>
-        <ListView fx:id="wordList" onMouseClicked="#selectionUpdated"/>
-    </VBox>
-    <VBox maxWidth="1.7976931348623157E308" spacing="4.0" GridPane.columnIndex="1">
-        <HBox spacing="4.0">
-            <children>
-                <Label fx:id="wordLabel" text="Word">
-                    <font>
-                        <Font size="32.0"/>
-                    </font>
-                    <padding>
-                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0"/>
-                    </padding>
-                </Label>
-                <Label fx:id="typeLabel" contentDisplay="CENTER" text="Part of Speech">
-                    <font>
-                        <Font size="24.0"/>
-                    </font>
-                    <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                    </padding>
-                </Label>
-            </children>
-        </HBox>
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Definition" fx:id="definitionText">
-            <font>
-                <Font size="18.0"/>
-            </font>
+        <TextField fx:id="kokanuSearchBox" onKeyTyped="#updateSearch" styleClass="search-box" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Label text="English" GridPane.hgrow="NEVER" GridPane.rowIndex="2">
+            <padding>
+                <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+            </padding>
+         <styleClass>
+            <String fx:value="bold" />
+            <String fx:value="search-label" />
+         </styleClass>
+        </Label>
+        <TextField fx:id="englishSearchBox" onKeyTyped="#updateSearch" styleClass="search-box" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    </GridPane>
+    <VBox maxWidth="1.7976931348623157E308" GridPane.columnIndex="1">
+        <Label fx:id="wordLabel" text="Word" />
+        <Label fx:id="typeLabel" text="Part of Speech" />
+        <Text fx:id="definitionText" strokeType="OUTSIDE" strokeWidth="0.0" text="Definition">
         </Text>
-        <padding>
-            <Insets bottom="4.0" left="4.0" right="4.0" top="4.0"/>
-        </padding>
-        <GridPane.margin>
-            <Insets/>
-        </GridPane.margin>
     </VBox>
+     <ListView fx:id="wordList" onMouseClicked="#selectionUpdated" GridPane.rowIndex="1" />
+   <WebView fx:id="dictionaryWebView" focusTraversable="false" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     <rowConstraints>
-        <RowConstraints/>
+        <RowConstraints />
+      <RowConstraints vgrow="ALWAYS" />
     </rowConstraints>
-    <opaqueInsets>
-        <Insets/>
-    </opaqueInsets>
-    <padding>
-        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0"/>
-    </padding>
+   <columnConstraints>
+      <ColumnConstraints percentWidth="35.0" />
+      <ColumnConstraints percentWidth="65.0" />
+   </columnConstraints>
+   <padding>
+      <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+   </padding>
+   <stylesheets>
+      <URL value="@style.css" />
+      <URL value="@dictionary.css" />
+   </stylesheets>
 </GridPane>

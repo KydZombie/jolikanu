@@ -1,49 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<VBox xmlns="http://javafx.com/javafx/24" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="io.github.kydzombie.jolikanu.transliterator.TransliteratorController">
-    <HBox alignment="CENTER" prefHeight="800.0" prefWidth="1280.0" spacing="8.0">
-        <padding>
-            <Insets bottom="4.0" left="4.0" right="4.0" top="4.0"/>
-        </padding>
-        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Latin" textAlignment="CENTER">
-                <font>
-                    <Font size="48.0"/>
-                </font>
-            </Label>
-            <TextArea fx:id="latinTextArea" onKeyTyped="#updateLikanuText" prefHeight="200.0"
-                      prefWidth="200.0" wrapText="true" VBox.vgrow="ALWAYS">
-                <font>
-                    <Font size="24.0"/>
-                </font>
-            </TextArea>
-        </VBox>
-        <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Likanu"
-                   textAlignment="CENTER">
-                <font>
-                    <Font size="48.0"/>
-                </font>
-            </Label>
-            <TextArea fx:id="likanuTextArea" onKeyTyped="#updateLatinText" prefHeight="200.0"
-                      prefWidth="200.0" wrapText="true" VBox.vgrow="ALWAYS">
-                <font>
-                    <Font size="24.0"/>
-                </font>
-            </TextArea>
-        </VBox>
-    </HBox>
-    <Label fx:id="errorLabel" text="No Error" textFill="RED">
-        <font>
-            <Font size="16.0"/>
-        </font>
-        <VBox.margin>
-            <Insets bottom="4.0" left="4.0" right="4.0" top="4.0"/>
-        </VBox.margin>
-    </Label>
-</VBox>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+
+<GridPane hgap="4.0" vgap="4.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="io.github.kydzombie.jolikanu.transliterator.TransliteratorController">
+    <stylesheets><URL value="@transliterator.css" /></stylesheets>
+    <columnConstraints>
+        <ColumnConstraints halignment="CENTER" percentWidth="50" />
+        <ColumnConstraints halignment="CENTER" percentWidth="50" />
+    </columnConstraints>
+    <Label text="Latin"><styleClass><String fx:value="transliterator-label" /><String fx:value="bold" /></styleClass></Label>
+    <TextArea fx:id="latinTextArea" onKeyTyped="#updateLikanuText" styleClass="transliterator-textbox"
+              wrapText="true" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+    <TextArea fx:id="likanuTextArea" onKeyTyped="#updateLatinText" styleClass="transliterator-textbox"
+              wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+    <Label text="Likanu" GridPane.columnIndex="1"><styleClass><String fx:value="transliterator-label" /><String fx:value="bold" /></styleClass></Label>
+   <padding>
+      <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+   </padding>
+</GridPane>

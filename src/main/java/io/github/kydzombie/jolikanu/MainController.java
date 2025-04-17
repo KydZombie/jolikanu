@@ -2,6 +2,7 @@ package io.github.kydzombie.jolikanu;
 
 import io.github.kydzombie.jolikanu.transliterator.TransliteratorController;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.VBox;
@@ -16,7 +17,7 @@ public class MainController {
 
     @FXML
     @SuppressWarnings("unused")
-    private VBox transliterator;
+    private Parent transliterator;
 
     @FXML
     private TransliteratorController transliteratorController;

@@ -5,8 +5,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 public class TransliteratorController {
-    @FXML
-    Label errorLabel;
+    // TODO: Maybe bring back error
+    //  label but actually do something.
+//    @FXML
+//    Label errorLabel;
 
     @FXML
     TextArea latinTextArea;
@@ -16,8 +18,8 @@ public class TransliteratorController {
 
     @FXML
     private void initialize() {
-        errorLabel.setVisible(false);
-        errorLabel.setManaged(false);
+//        errorLabel.setVisible(false);
+//        errorLabel.setManaged(false);
     }
 
     @FXML

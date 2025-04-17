@@ -12,6 +12,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.web.WebView;
 
 import java.io.File;
 import java.net.URISyntaxException;
@@ -38,6 +39,9 @@ public class DictionaryController {
 
     @FXML
     Text definitionText;
+
+    @FXML
+    WebView dictionaryWebView;
 
     @FXML
     private void initialize() {
@@ -72,15 +76,21 @@ public class DictionaryController {
         });
 
         wordList.setItems(filteredData);
+        // TODO: Disable following links
+//        dictionaryWebView.getEngine().getLoadWorker().stateProperty()
+
+        /*
+        TODO: Should I disable javascript?
+            Pretty much all it does is nerf search
+            (which is supposed to be disabled anyway),
+            and disable the night mode and home buttons
+         */
+//        dictionaryWebView.getEngine().javaScriptEnabledProperty().set(false);
     }
 
     @FXML
     private void updateSearch() {
-        filteredData.setPredicate(word -> (
-                word.getLatin().contains(kokanuSearchBox.getCharacters()) ||
-                        word.getLikanu().contains(kokanuSearchBox.getCharacters())) &&
-                word.getDefinition().contains(englishSearchBox.getCharacters())
-        );
+        filteredData.setPredicate(word -> (word.getLatin().contains(kokanuSearchBox.getCharacters()) || word.getLikanu().contains(kokanuSearchBox.getCharacters())) && word.getDefinition().contains(englishSearchBox.getCharacters()));
     }
 
     @FXML
@@ -88,15 +98,15 @@ public class DictionaryController {
         Word selectedWord = wordList.getSelectionModel().getSelectedItem();
         if (selectedWord == null) return;
 
-        wordLabel.setText(
-                switch (Settings.writingSystemPreference) {
-                    case LATIN_FIRST -> selectedWord.getLatin() + " / " + selectedWord.getLikanu();
-                    case LIKANU_FIRST -> selectedWord.getLikanu() + " / " + selectedWord.getLatin();
-                    case ONLY_LATIN -> selectedWord.getLatin();
-                    case ONLY_LIKANU -> selectedWord.getLikanu();
-                }
-        );
+        wordLabel.setText(switch (Settings.writingSystemPreference) {
+            case LATIN_FIRST -> selectedWord.getLatin() + " / " + selectedWord.getLikanu();
+            case LIKANU_FIRST -> selectedWord.getLikanu() + " / " + selectedWord.getLatin();
+            case ONLY_LATIN -> selectedWord.getLatin();
+            case ONLY_LIKANU -> selectedWord.getLikanu();
+        });
         typeLabel.setText("(" + selectedWord.getType() + ")");
         definitionText.setText(selectedWord.getDefinition());
+
+        dictionaryWebView.getEngine().load("https://dictionary.kokanu.com/" + selectedWord.getLatin());
     }
 }

@@ -4,33 +4,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.web.WebView?>
 <?import java.net.URL?>
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="800.0" prefWidth="1280.0" spacing="20.0" xmlns="http://javafx.com/javafx/24"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.kydzombie.jolikanu.MainController">
-    <stylesheets>
-        <URL value="@style.css"/>
-    </stylesheets>
-    <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+<VBox xmlns="http://javafx.com/javafx/24" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="io.github.kydzombie.jolikanu.MainController">
+    <stylesheets><URL value="@style.css"/></stylesheets>
+    <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
         <Tab fx:id="transliteratorTab" text="Transliterator">
             <fx:include fx:id="transliterator" source="transliterator.fxml"/>
         </Tab>
-        <Tab text="Dictionary">
-            <fx:include source="dictionary.fxml"/>
-        </Tab>
-        <Tab text="Kokanu Book">
-            <VBox>
-                <WebView fx:id="bookWebView" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0"
-                         VBox.vgrow="ALWAYS"/>
-            </VBox>
-        </Tab>
-        <Tab text="Online Dictionary">
-            <VBox>
-                <WebView fx:id="dictionaryWebView" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0"
-                         VBox.vgrow="ALWAYS"/>
-            </VBox>
-        </Tab>
-        <Tab text="Settings">
-            <fx:include source="settings.fxml"/>
-        </Tab>
+        <Tab text="Dictionary"><fx:include source="dictionary.fxml"/></Tab>
+        <Tab text="Kokanu Book"><WebView fx:id="bookWebView" VBox.vgrow="ALWAYS"/></Tab>
+        <Tab text="Online Dictionary"><WebView fx:id="dictionaryWebView" VBox.vgrow="ALWAYS"/></Tab>
+        <Tab text="Settings"><fx:include source="settings.fxml"/></Tab>
     </TabPane>
 </VBox>

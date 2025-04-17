@@ -1,10 +1,37 @@
+/* Regular */
+
 @font-face {
     font-family: "Noto Sans";
     src: url("fonts/NotoSans-Regular.ttf");
 }
 
--- Idk why this keeps breaking?
--- .root {
---     -fx-font-family: "Noto Sans";
---     -fx-font-size: 12pt;
--- }
+@font-face {
+    font-family: "Noto Sans JP";
+    src: url("fonts/NotoSansJP-Regular.ttf");
+}
+
+/* Bold */
+@font-face {
+    font-family: "Noto Sans Bold";
+    src: url("fonts/NotoSans-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Noto Sans JP Bold";
+    src: url("fonts/NotoSansJP-Bold.ttf");
+}
+
+/* Backup */
+@font-face {
+    font-family: "Code2000";
+    src: url("fonts/Code2000-rdLO.ttf");
+}
+
+.root {
+    -fx-font-family: "Noto Sans", "Noto Sans JP", "Code2000";
+    -fx-font-size: 12pt;
+}
+
+.bold {
+    -fx-font-family: "Noto Sans Bold", "Noto Sans JP Bold", "Code2000";
+}
