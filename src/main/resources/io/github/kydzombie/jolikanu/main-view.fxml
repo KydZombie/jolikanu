@@ -3,10 +3,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.web.WebView?>
+<?import java.net.URL?>
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
       prefHeight="800.0" prefWidth="1280.0" spacing="20.0" xmlns="http://javafx.com/javafx/24"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.kydzombie.jolikanu.MainController"
-      stylesheets="style.css">
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.kydzombie.jolikanu.MainController">
+    <stylesheets>
+        <URL value="@style.css"/>
+    </stylesheets>
     <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
         <Tab fx:id="transliteratorTab" text="Transliterator">
             <fx:include fx:id="transliterator" source="transliterator.fxml"/>

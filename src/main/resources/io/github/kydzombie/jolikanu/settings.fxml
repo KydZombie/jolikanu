@@ -20,7 +20,7 @@
         <VBox.margin>
             <Insets />
         </VBox.margin>
-        <Label prefWidth="58.0" text="-n Diacritic">
+        <Label text="-n Diacritic">
             <HBox.margin>
                 <Insets />
             </HBox.margin>
@@ -28,7 +28,7 @@
                 <Insets bottom="4.0" top="4.0" />
             </padding>
         </Label>
-        <ComboBox fx:id="diacriticComboBox" onAction="#updateMacronSetting" prefWidth="150.0" />
+        <ComboBox fx:id="diacriticComboBox" onAction="#updateMacronSetting"/>
     </HBox>
     <HBox spacing="4.0">
         <children>
@@ -37,7 +37,7 @@
                     <Insets bottom="4.0" top="4.0" />
                 </padding>
             </Label>
-            <ComboBox fx:id="writingSystemPreferenceComboBox" onAction="#updateWritingSystemSetting" prefWidth="150.0" />
+            <ComboBox fx:id="writingSystemPreferenceComboBox" onAction="#updateWritingSystemSetting"/>
         </children>
     </HBox>
 </VBox>

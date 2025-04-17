@@ -3,6 +3,8 @@
     src: url("fonts/NotoSans-Regular.ttf");
 }
 
-.root {
-    -fx-font-family: "Noto Sans";
-}
+-- Idk why this keeps breaking?
+-- .root {
+--     -fx-font-family: "Noto Sans";
+--     -fx-font-size: 12pt;
+-- }
