@@ -1,43 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="4.0" xmlns="http://javafx.com/javafx/24" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.kydzombie.jolikanu.settings.SettingsController">
+
+<GridPane hgap="4.0" vgap="4.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="io.github.kydzombie.jolikanu.settings.SettingsController">
     <padding>
-        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0"/>
     </padding>
-    <CheckBox fx:id="convertCommas" mnemonicParsing="false" onAction="#setConvertCommas" selected="true" text=", -&gt; ､">
-        <padding>
-            <Insets bottom="4.0" top="4.0" />
-        </padding>
-    </CheckBox>
-    <HBox spacing="4.0">
-        <VBox.margin>
-            <Insets />
-        </VBox.margin>
-        <Label text="-n Diacritic">
-            <HBox.margin>
-                <Insets />
-            </HBox.margin>
-            <padding>
-                <Insets bottom="4.0" top="4.0" />
-            </padding>
-        </Label>
-        <ComboBox fx:id="diacriticComboBox" onAction="#updateMacronSetting"/>
-    </HBox>
-    <HBox spacing="4.0">
-        <children>
-            <Label text="Preferred Writing System">
-                <padding>
-                    <Insets bottom="4.0" top="4.0" />
-                </padding>
-            </Label>
-            <ComboBox fx:id="writingSystemPreferenceComboBox" onAction="#updateWritingSystemSetting"/>
-        </children>
-    </HBox>
-</VBox>
+    <stylesheets>
+        <URL value="@style.css"/>
+        <URL value="@settings.css"/>
+    </stylesheets>
+    <Label styleClass="bold" text="Convert Commas"/>
+    <CheckBox fx:id="convertCommas" onAction="#setConvertCommas" text=", -&gt; ､" GridPane.columnIndex="1"/>
+    <Label styleClass="bold" text="Nasal Diacritic" GridPane.rowIndex="1"/>
+    <Label styleClass="bold" text="Preferred Writing System" GridPane.rowIndex="2"/>
+    <ComboBox fx:id="diacriticComboBox" onAction="#updateMacronSetting" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <ComboBox fx:id="writingSystemPreferenceComboBox" onAction="#updateWritingSystemSetting" GridPane.columnIndex="1"
+              GridPane.rowIndex="2"/>
+</GridPane>
