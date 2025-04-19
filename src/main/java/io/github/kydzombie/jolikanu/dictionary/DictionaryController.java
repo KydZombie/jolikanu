@@ -15,6 +15,9 @@ import javafx.scene.text.Text;
 import javafx.scene.web.WebView;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URISyntaxException;
 
 public class DictionaryController {
@@ -43,13 +46,15 @@ public class DictionaryController {
     @FXML
     WebView dictionaryWebView;
 
+    static final String DICTIONARY_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVGXFd17kcvfu__zjshqiV3kW360IclOEfEdWda_K6ZCg4TY6nW2Gwn4_bs1yQeFLwrZI1_xEvSuP0/pub?gid=0&single=true&output=csv";
+
     @FXML
     private void initialize() {
         try {
-            File file = new File(JolikanuApp.class.getResource("dictionary.csv").toURI());
-            System.out.println(file.exists());
-            dictionary = new Dictionary(file);
-        } catch (URISyntaxException e) {
+            System.out.println("Downloading dictionary...");
+            dictionary = new Dictionary(new URI(DICTIONARY_URL).toURL());
+            System.out.println("Successfully downloaded dictionary!");
+        } catch (URISyntaxException | IOException e) {
             throw new RuntimeException(e);
         }
 
@@ -66,7 +71,12 @@ public class DictionaryController {
                     setGraphic(null);
                 } else {
                     VBox wordBox = new VBox();
-                    Label label = new Label(word.getLatin() + " / " + word.getLikanu() + " (" + word.getType() + ")");
+                    Label label = new Label(switch (Settings.writingSystemPreference) {
+                        case LATIN_FIRST -> word.getLatin() + " / " + word.getLikanu();
+                        case LIKANU_FIRST -> word.getLikanu() + " / " + word.getLatin();
+                        case ONLY_LATIN -> word.getLatin();
+                        case ONLY_LIKANU -> word.getLikanu();
+                    } + " (" + word.getType() + ")");
                     Text description = new Text(word.getDefinition());
                     description.setWrappingWidth(250);
                     wordBox.getChildren().addAll(label, description);
